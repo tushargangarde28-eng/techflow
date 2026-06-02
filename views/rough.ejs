@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="TechFlow - Flowing Ideas Into Digital Solutions. Premium IT agency offering web development, e-commerce, SEO, and custom software solutions.">
+  <meta name="theme-color" content="#0EA5E9">
+  <title>TechFlow | Premium Digital Solutions Agency</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    /* ==================== CSS VARIABLES ==================== */
+    :root {
+      --primary: #0EA5E9;
+      --primary-dark: #0284C7;
+      --secondary: #2563EB;
+      --accent: #38BDF8;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: all 0.4s ease;
+    }
+
+    /* Light Theme */
+    :root,
+    [data-theme="light"] {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F8FAFC;
+      --bg-darker: #F1F5F9;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --card-bg-solid: #FFFFFF;
+      --border-color: #E2E8F0;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+      --shadow-glow: 0 0 30px rgba(14, 165, 233, 0.2);
+      --navbar-bg: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Dark Theme */
+    [data-theme="dark"] {
+      --bg-primary: #0F172A;
+      --bg-secondary: #1E293B;
+      --bg-darker: #0A0F1A;
+      --text-primary: #FFFFFF;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --card-bg: rgba(30, 41, 59, 0.8);
+      --card-bg-solid: #1E293B;
+      --border-color: rgba(14, 165, 233, 0.2);
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 30px rgba(14, 165, 233, 0.3);
+      --navbar-bg: rgba(15, 23, 42, 0.95);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+      transition: var(--transition-smooth);
+    }
+
+    /* ==================== TYPOGRAPHY ==================== */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 2.8rem;
+      }
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% auto;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .title-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 1rem auto;
+      border-radius: 3px;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .section-padding {
+      padding: 60px 0;
+    }
+
+    @media (min-width: 768px) {
+      .section-padding {
+        padding: 100px 0;
+      }
+    }
+
+    /* ==================== NAVBAR ==================== */
+    .glass-nav {
+      background: var(--navbar-bg);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', monospace;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin: 0 10px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary);
+    }
+
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+      width: 80%;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--primary);
+      transform: scale(1.05);
+    }
+
+    .btn-consult {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      padding: 8px 20px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .btn-consult:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow);
+      color: white;
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero-section {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--bg-primary);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 3.5rem; }
+    }
+    @media (min-width: 992px) {
+      .hero-title { font-size: 4.5rem; }
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Floating Icons */
+    .floating-icons {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .floating-icons i {
+      position: absolute;
+      font-size: 2rem;
+      color: var(--primary);
+      opacity: 0.3;
+      animation: float 20s infinite;
+    }
+
+    .floating-icons i:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+    .floating-icons i:nth-child(2) { top: 70%; left: 85%; animation-delay: 3s; }
+    .floating-icons i:nth-child(3) { top: 40%; left: 80%; animation-delay: 6s; }
+    .floating-icons i:nth-child(4) { top: 80%; left: 20%; animation-delay: 2s; }
+    .floating-icons i:nth-child(5) { top: 25%; left: 85%; animation-delay: 8s; }
+    .floating-icons i:nth-child(6) { top: 60%; left: 5%; animation-delay: 4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(10deg); }
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(14, 165, 233, 0.6);
+    }
+
+    .btn-outline-light {
+      border: 2px solid var(--text-primary);
+      background: transparent;
+      color: var(--text-primary);
+    }
+
+    .btn-outline-light:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .scroll-indicator span {
+      display: block;
+      width: 30px;
+      height: 50px;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .scroll-indicator span::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 10px;
+      background: var(--primary);
+      border-radius: 2px;
+      animation: scrollAnim 2s infinite;
+    }
+
+    @keyframes scrollAnim {
+      0% { opacity: 1; top: 8px; }
+      100% { opacity: 0; top: 30px; }
+    }
+
+    /* ==================== ABOUT SECTION ==================== */
+    .mission-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .mission-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .counter-card {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(37, 99, 235, 0.1));
+      border-radius: 20px;
+      padding: 30px 15px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .counter-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .counter-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    /* ==================== SERVICE CARDS ==================== */
+    .service-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .service-card i {
+      color: var(--primary);
+      margin-bottom: 15px;
+      transition: var(--transition);
+    }
+
+    .service-card:hover i {
+      transform: scale(1.1);
+      color: var(--accent);
+    }
+
+    /* ==================== TECH STACK ==================== */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .tech-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 992px) {
+      .tech-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (min-width: 1200px) {
+      .tech-grid { grid-template-columns: repeat(6, 1fr); }
+    }
+
+    .tech-item {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 20px 12px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .tech-item::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: -1;
+    }
+
+    .tech-item:hover::before {
+      opacity: 0.5;
+    }
+
+    .tech-item:hover {
+      transform: translateY(-8px);
+      border-color: transparent;
+    }
+
+    .tech-item i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .tech-item span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: block;
+      color: var(--text-primary);
+    }
+
+    /* Tooltip */
+    .tech-item[data-tooltip] {
+      position: relative;
+    }
+
+    .tech-item[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      margin-bottom: 8px;
+      z-index: 100;
+    }
+
+    /* ==================== PORTFOLIO CARDS ==================== */
+    .portfolio-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid var(--border-color);
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .portfolio-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portfolio-image i {
+      font-size: 4rem;
+      color: white;
+      opacity: 0.8;
+    }
+
+    .project-1 { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+    .project-2 { background: linear-gradient(135deg, var(--secondary), var(--accent)); }
+    .project-3 { background: linear-gradient(135deg, var(--accent), var(--primary)); }
+    .project-4 { background: linear-gradient(135deg, var(--primary), var(--accent)); }
+    .project-5 { background: linear-gradient(135deg, var(--secondary), var(--primary)); }
+
+    .portfolio-content {
+      padding: 20px;
+    }
+
+    .tech-stack {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .tech-stack span {
+      background: rgba(14, 165, 233, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--primary);
+    }
+
+    /* ==================== PRICING SECTION ==================== */
+    .pricing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+      margin-top: 56px;
+    }
+
+    .price-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border-radius: 32px;
+      padding: 32px 24px 36px;
+      width: 100%;
+      max-width: 350px;
+      transition: var(--transition);
+      border: 1px solid var(--border-color);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-md);
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      border-radius: 34px;
+      opacity: 0;
+      transition: opacity 0.5s;
+      z-index: -1;
+    }
+
+    .price-card:hover::before {
+      opacity: 0.5;
+    }
+
+    .price-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: transparent;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      background: linear-gradient(120deg, var(--primary), var(--secondary));
+      padding: 6px 14px;
+      border-radius: 60px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 0 12px rgba(14,165,233,0.7);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      background: linear-gradient(145deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .plan-name {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .price-tag {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 12px 0 8px;
+    }
+
+    .starting-from {
+      font-size: 0.85rem;
+      color: var(--accent);
+      background: rgba(14,165,233,0.15);
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 40px;
+      margin-bottom: 16px;
+    }
+
+    .best-for {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 10px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 28px;
+      flex: 1;
+    }
+
+    .features-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+
+    .features-list li i {
+      color: var(--primary);
+      width: 18px;
+    }
+
+    .btn-plan {
+      background: rgba(14, 165, 233, 0.1);
+      border: 1.5px solid var(--border-color);
+      padding: 12px 0;
+      border-radius: 60px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
+
+    .btn-plan:hover {
+      background: linear-gradient(95deg, var(--primary), var(--secondary));
+      border-color: transparent;
+      color: white;
+    }
+
+    .btn-primary-solid {
+      background: linear-gradient(95deg, var(--primary), var(--secondary));
+      border: none;
+      color: white;
+    }
+
+    .price-note {
+      text-align: center;
+      margin-top: 56px;
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      padding: 16px 24px;
+      border-radius: 60px;
+      display: inline-block;
+      width: auto;
+    }
+
+    .trust-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: var(--card-bg);
+      padding: 8px 20px;
+      border-radius: 60px;
+    }
+
+    /* ==================== FEATURE CARDS ==================== */
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px 15px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    /* ==================== PROCESS SECTION ==================== */
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 50px;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 25px 15px;
+      text-align: center;
+      flex: 1;
+      min-width: 140px;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .step-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto 15px;
+      color: white;
+    }
+
+    /* ==================== FOUNDER SECTION ==================== */
+    .founder-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .founder-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+    }
+
+    .founder-avatar {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 3rem;
+      color: white;
+    }
+
+    /* ==================== TESTIMONIALS ==================== */
+    .testimonial-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card p {
+      font-size: 1.1rem;
+      font-style: italic;
+      margin: 20px 0;
+    }
+
+    .testimonial-card h5 {
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .stars i {
+      color: #FBBF24;
+      margin: 0 2px;
+    }
+
+    /* ==================== FAQ ACCORDION ==================== */
+    .faq-accordion .accordion-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      margin-bottom: 15px;
+      border-radius: 15px !important;
+      overflow: hidden;
+    }
+
+    .faq-accordion .accordion-button {
+      background: transparent;
+      color: var(--text-primary);
+      font-weight: 600;
+      padding: 20px;
+    }
+
+    .faq-accordion .accordion-button:not(.collapsed) {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(37, 99, 235, 0.1));
+      color: var(--primary);
+    }
+
+    .faq-accordion .accordion-body {
+      background: rgba(0, 0, 0, 0.2);
+      color: var(--text-secondary);
+      padding: 20px;
+    }
+
+    /* ==================== CONTACT ==================== */
+    .form-control {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 12px 15px;
+      border-radius: 12px;
+    }
+
+    .form-control:focus {
+      background: var(--card-bg-solid);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+      color: var(--text-primary);
+    }
+
+    .contact-info-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid var(--border-color);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .contact-item i {
+      width: 45px;
+      height: 45px;
+      background: rgba(14, 165, 233, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--primary);
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      background: var(--bg-darker);
+      padding: 60px 0 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      background: var(--card-bg);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      transition: var(--transition);
+      margin-right: 10px;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+
+    /* ==================== WHATSAPP FLOAT ==================== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+      transition: var(--transition);
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      color: white;
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      .section-padding { padding: 50px 0; }
+      .price-card { max-width: 100%; }
+      .navbar-collapse { padding: 20px 0; }
+      .theme-toggle { margin: 10px 0; }
+      .process-steps { gap: 12px; }
+      .step-card { min-width: 120px; padding: 15px 10px; }
+      .step-card h5 { font-size: 0.9rem; }
+      .testimonial-card { padding: 25px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 1.8rem; }
+      .section-title { font-size: 1.6rem; }
+      .tech-grid { gap: 10px; }
+      .tech-item { padding: 12px 8px; }
+      .tech-item i { font-size: 1.8rem; }
+    }
+
+    /* Animation Classes */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top glass-nav" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Tech<span class="gradient-text">Flow</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#technologies">Tech Stack</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#whyus">Why Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2 ms-lg-3">
+          <div class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+            <span class="d-none d-sm-inline">Theme</span>
+          </div>
+          <a href="https://wa.me/15551234567" class="btn-consult btn-sm" target="_blank">
+            <i class="fab fa-whatsapp"></i> Free Consult
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="floating-icons">
+      <i class="fab fa-react"></i><i class="fab fa-node-js"></i><i class="fab fa-python"></i>
+      <i class="fab fa-js"></i><i class="fab fa-aws"></i><i class="fas fa-database"></i>
+    </div>
+    <div class="container hero-container">
+      <div class="row min-vh-100 align-items-center">
+        <div class="col-lg-8 mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h1 class="hero-title">Flowing Ideas Into <span class="gradient-text">Digital Solutions</span></h1>
+          <p class="hero-subtitle mt-3">Transform your business with cutting-edge technology, innovative design, and scalable solutions that drive real results.</p>
+          <div class="hero-buttons mt-4">
+            <a href="#pricing" class="btn btn-primary btn-lg me-3">View Pricing</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator"><span></span></div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">About <span class="gradient-text">TechFlow</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">Innovative digital agency crafting exceptional experiences</p>
+      </div>
+      <div class="row g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <h3>We Turn Ideas Into Reality</h3>
+          <p class="lead">TechFlow is a premier IT agency dedicated to delivering high-performance digital solutions that empower businesses to thrive in the modern era.</p>
+          <p>With a team of passionate developers, creative designers, and strategic thinkers, we combine technical excellence with innovative design to create products that users love. Our agile methodology ensures rapid delivery without compromising quality.</p>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="row g-4">
+            <div class="col-6">
+              <div class="mission-card">
+                <i class="fas fa-bullseye fa-3x mb-3" style="color: #0EA5E9"></i>
+                <h4>Our Mission</h4>
+                <p>To democratize cutting-edge technology and help businesses scale through innovative digital solutions.</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mission-card">
+                <i class="fas fa-eye fa-3x mb-3" style="color: #38BDF8"></i>
+                <h4>Our Vision</h4>
+                <p>To become a global leader in digital transformation, recognized for excellence and innovation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Counters -->
+      <div class="row counters-row mt-5 g-4">
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+          <div class="counter-card">
+            <div class="counter-number" data-target="247">0</div>
+            <p>Projects Completed</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+          <div class="counter-card">
+            <div class="counter-number" data-target="186">0</div>
+            <p>Happy Clients</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <div class="counter-card">
+            <div class="counter-number" data-target="24">0</div>
+            <p>Support Available</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="400">
+          <div class="counter-card">
+            <div class="counter-number" data-target="32">0</div>
+            <p>Technologies</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section-padding" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">Comprehensive solutions tailored to your needs</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="50">
+          <div class="service-card"><i class="fas fa-laptop-code fa-3x"></i><h4 class="mt-3">Web Development</h4><p>Custom websites</p></div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="100">
+          <div class="service-card"><i class="fas fa-mobile-alt fa-3x"></i><h4 class="mt-3">Web Applications</h4><p>Dynamic PWAs</p></div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="150">
+          <div class="service-card"><i class="fas fa-shopping-cart fa-3x"></i><h4 class="mt-3">E-commerce</h4><p>Online stores</p></div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="200">
+          <div class="service-card"><i class="fas fa-chart-line fa-3x"></i><h4 class="mt-3">SEO Optimization</h4><p>Boost rankings</p></div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="250">
+          <div class="service-card"><i class="fas fa-tools fa-3x"></i><h4 class="mt-3">Maintenance</h4><p>24/7 support</p></div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="300">
+          <div class="service-card"><i class="fas fa-paint-brush fa-3x"></i><h4 class="mt-3">UI/UX Design</h4><p>User-first</p></div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="350">
+          <div class="service-card"><i class="fas fa-cloud fa-3x"></i><h4 class="mt-3">Hosting Setup</h4><p>Cloud solutions</p></div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="400">
+          <div class="service-card"><i class="fas fa-cogs fa-3x"></i><h4 class="mt-3">Custom Software</h4><p>Enterprise</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologies Section - COMPLETE with all 16 technologies -->
+  <section id="technologies" class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Tech <span class="gradient-text">Stack</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">Modern technologies we master</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-item" data-tooltip="HTML5"><i class="fab fa-html5"></i><span>HTML5</span></div>
+        <div class="tech-item" data-tooltip="CSS3"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+        <div class="tech-item" data-tooltip="Bootstrap"><i class="fab fa-bootstrap"></i><span>Bootstrap</span></div>
+        <div class="tech-item" data-tooltip="JavaScript"><i class="fab fa-js"></i><span>JavaScript</span></div>
+        <div class="tech-item" data-tooltip="Node.js"><i class="fab fa-node"></i><span>Node.js</span></div>
+        <div class="tech-item" data-tooltip="Express.js"><i class="fas fa-server"></i><span>Express.js</span></div>
+        <div class="tech-item" data-tooltip="SQLite"><i class="fas fa-database"></i><span>SQLite</span></div>
+        <div class="tech-item" data-tooltip="MySQL"><i class="fas fa-database"></i><span>MySQL</span></div>
+        <div class="tech-item" data-tooltip="PHP"><i class="fab fa-php"></i><span>PHP</span></div>
+        <div class="tech-item" data-tooltip="Python"><i class="fab fa-python"></i><span>Python</span></div>
+        <div class="tech-item" data-tooltip=".NET"><i class="fab fa-microsoft"></i><span>.NET</span></div>
+        <div class="tech-item" data-tooltip="C#"><i class="fas fa-code"></i><span>C#</span></div>
+        <div class="tech-item" data-tooltip="Git"><i class="fab fa-git-alt"></i><span>Git</span></div>
+        <div class="tech-item" data-tooltip="GitHub"><i class="fab fa-github"></i><span>GitHub</span></div>
+        <div class="tech-item" data-tooltip="REST APIs"><i class="fas fa-plug"></i><span>REST APIs</span></div>
+        <div class="tech-item" data-tooltip="Firebase"><i class="fas fa-fire"></i><span>Firebase</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section - COMPLETE with 5 projects -->
+  <section id="portfolio" class="section-padding" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Recent <span class="gradient-text">Projects</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">Showcasing our best work</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4" data-aos="flip-up">
+          <div class="portfolio-card">
+            <div class="portfolio-image project-1"><i class="fas fa-hospital-user"></i></div>
+            <div class="portfolio-content">
+              <h4>Techno Clinic</h4>
+              <p>Complete healthcare management platform with appointment scheduling.</p>
+              <div class="tech-stack"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
+              <div class="portfolio-links d-flex gap-2"><a href="#" class="btn btn-sm btn-outline-primary">Live Demo</a><a href="#" class="btn btn-sm btn-outline-light">Source</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="100">
+          <div class="portfolio-card">
+            <div class="portfolio-image project-2"><i class="fas fa-utensils"></i></div>
+            <div class="portfolio-content"><h4>Restaurant Website</h4><p>Interactive menu with online reservations.</p><div class="tech-stack"><span>HTML5</span><span>CSS3</span><span>PHP</span></div><div class="portfolio-links d-flex gap-2"><a href="#" class="btn btn-sm btn-outline-primary">Live Demo</a><a href="#" class="btn btn-sm btn-outline-light">Source</a></div></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="200">
+          <div class="portfolio-card">
+            <div class="portfolio-image project-3"><i class="fas fa-dumbbell"></i></div>
+            <div class="portfolio-content"><h4>Gym Management</h4><p>Membership and class scheduling system.</p><div class="tech-stack"><span>MERN</span><span>JWT</span></div><div class="portfolio-links d-flex gap-2"><a href="#" class="btn btn-sm btn-outline-primary">Live Demo</a><a href="#" class="btn btn-sm btn-outline-light">Source</a></div></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="300">
+          <div class="portfolio-card">
+            <div class="portfolio-image project-4"><i class="fas fa-user-circle"></i></div>
+            <div class="portfolio-content"><h4>Portfolio Website</h4><p>Creative agency portfolio with smooth animations.</p><div class="tech-stack"><span>GSAP</span><span>Bootstrap</span></div><div class="portfolio-links d-flex gap-2"><a href="#" class="btn btn-sm btn-outline-primary">Live Demo</a><a href="#" class="btn btn-sm btn-outline-light">Source</a></div></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="400">
+          <div class="portfolio-card">
+            <div class="portfolio-image project-5"><i class="fas fa-university"></i></div>
+            <div class="portfolio-content"><h4>College Management</h4><p>ERP system with analytics and reporting.</p><div class="tech-stack"><span>Django</span><span>SQLite</span></div><div class="portfolio-links d-flex gap-2"><a href="#" class="btn btn-sm btn-outline-primary">Live Demo</a><a href="#" class="btn btn-sm btn-outline-light">Source</a></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section id="whyus" class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Why <span class="gradient-text">Choose Us</span></h2>
+        <div class="title-divider"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-md-4" data-aos="zoom-in"><div class="feature-card"><i class="fas fa-mobile-alt fa-3x"></i><h5>Mobile Responsive</h5><p>Perfect on all devices</p></div></div>
+        <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="50"><div class="feature-card"><i class="fas fa-tachometer-alt fa-3x"></i><h5>Fast Loading</h5><p>Optimized performance</p></div></div>
+        <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100"><div class="feature-card"><i class="fas fa-search fa-3x"></i><h5>SEO Friendly</h5><p>Rank higher on Google</p></div></div>
+        <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="150"><div class="feature-card"><i class="fas fa-shield-alt fa-3x"></i><h5>Secure Development</h5><p>Enterprise security</p></div></div>
+        <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="200"><div class="feature-card"><i class="fas fa-tag fa-3x"></i><h5>Affordable Pricing</h5><p>Best value</p></div></div>
+        <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="250"><div class="feature-card"><i class="fas fa-headset fa-3x"></i><h5>Ongoing Support</h5><p>24/7 service</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section - COMPLETE -->
+  <section id="pricing" class="section-padding" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up">
+        <h2 class="section-title">Simple & Transparent Pricing</h2>
+        <p class="section-subtitle">Affordable digital solutions tailored for businesses of every size.</p>
+        <div class="title-divider"></div>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card" data-aos="flip-left">
+          <div class="card-icon"><i class="fas fa-rocket"></i></div>
+          <h3 class="plan-name">Starter Website</h3>
+          <div class="price-tag">₹4,999</div>
+          <div class="best-for"><i class="fas fa-users"></i> Students, freelancers, portfolios, local shops</div>
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Up to 5 Pages</li>
+            <li><i class="fas fa-check-circle"></i> Mobile Responsive Design</li>
+            <li><i class="fas fa-check-circle"></i> Contact Form</li>
+            <li><i class="fas fa-check-circle"></i> WhatsApp Integration</li>
+            <li><i class="fas fa-check-circle"></i> Basic SEO Setup</li>
+            <li><i class="fas fa-check-circle"></i> Fast Loading Website</li>
+            <li><i class="fas fa-check-circle"></i> 1 Month Support</li>
+          </ul>
+          <a href="#" class="btn-plan">Get Started <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="price-card" data-aos="flip-left" data-aos-delay="100">
+          <div class="popular-badge"><i class="fas fa-fire"></i> Most Popular</div>
+          <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="plan-name">Business Website</h3>
+          <div class="price-tag">₹9,999</div>
+          <div class="best-for"><i class="fas fa-store"></i> Clinics, coaching classes, restaurants, local businesses</div>
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Up to 10 Pages</li>
+            <li><i class="fas fa-check-circle"></i> Premium UI Design</li>
+            <li><i class="fas fa-check-circle"></i> Dynamic Content Management</li>
+            <li><i class="fas fa-check-circle"></i> WhatsApp + Maps Integration</li>
+            <li><i class="fas fa-check-circle"></i> Advanced SEO Setup</li>
+            <li><i class="fas fa-check-circle"></i> Speed Optimization</li>
+            <li><i class="fas fa-check-circle"></i> 3 Months Support</li>
+          </ul>
+          <a href="#" class="btn-plan btn-primary-solid">Choose Plan <i class="fas fa-gem"></i></a>
+        </div>
+        <div class="price-card" data-aos="flip-left" data-aos-delay="200">
+          <div class="card-icon"><i class="fas fa-cogs"></i></div>
+          <h3 class="plan-name">Custom Solution</h3>
+          <div class="price-tag">₹19,999<span>+</span></div>
+          <div class="starting-from">Starting From</div>
+          <div class="best-for"><i class="fas fa-laptop-code"></i> Web Applications, Admin Panels, Custom Software</div>
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Custom Development</li>
+            <li><i class="fas fa-check-circle"></i> Admin Dashboard</li>
+            <li><i class="fas fa-check-circle"></i> Database + Auth System</li>
+            <li><i class="fas fa-check-circle"></i> API Integration</li>
+            <li><i class="fas fa-check-circle"></i> Advanced Security</li>
+            <li><i class="fas fa-check-circle"></i> Priority Support</li>
+            <li><i class="fas fa-check-circle"></i> 6 Months Maintenance</li>
+          </ul>
+          <a href="#" class="btn-plan">Request Quote <i class="fas fa-headset"></i></a>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <div class="price-note"><i class="fas fa-info-circle me-2"></i>Need something unique? Contact us for a custom solution tailored to your requirements.</div>
+      </div>
+      <div class="trust-strip">
+        <div class="trust-item"><i class="fas fa-chalkboard-user"></i> Free Consultation</div>
+        <div class="trust-item"><i class="fas fa-mobile-alt"></i> Mobile Responsive</div>
+        <div class="trust-item"><i class="fas fa-chart-simple"></i> SEO Friendly</div>
+        <div class="trust-item"><i class="fas fa-headset"></i> Ongoing Support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Our <span class="gradient-text">Process</span></h2>
+        <div class="title-divider"></div>
+      </div>
+      <div class="process-steps">
+        <div class="step-card"><div class="step-number">1</div><h5>Requirement</h5><p>Discussion</p></div>
+        <div class="step-card"><div class="step-number">2</div><h5>Design</h5><p>Planning</p></div>
+        <div class="step-card"><div class="step-number">3</div><h5>Development</h5><p>Agile Sprint</p></div>
+        <div class="step-card"><div class="step-number">4</div><h5>Testing</h5><p>QA</p></div>
+        <div class="step-card"><div class="step-number">5</div><h5>Deployment</h5><p>Launch</p></div>
+        <div class="step-card"><div class="step-number">6</div><h5>Support</h5><p>24/7</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Section -->
+    <!-- <section class="section-padding" style="background: var(--bg-secondary);">
+        <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Meet Our <span class="gradient-text">Founders</span></h2>
+            <div class="title-divider"></div>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-5" data-aos="zoom-in"><div class="founder-card"><div class="founder-avatar"><i class="fas fa-code"></i></div><h3>Tushar Gangarde</h3><p>Full Stack Developer</p><i class="fas fa-check-circle text-primary"></i> 8+ Years Experience</div></div>
+            <div class="col-md-5" data-aos="zoom-in" data-aos-delay="100"><div class="founder-card"><div class="founder-avatar"><i class="fas fa-paint-brush"></i></div><h3>Ankita Zade</h3><p>Frontend Developer</p><i class="fas fa-check-circle text-primary"></i> 6+ Years Experience</div></div>
+        </div>
+        </div>
+    </section> -->
+
+  <!-- Testimonials Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Client <span class="gradient-text">Testimonials</span></h2>
+        <div class="title-divider"></div>
+      </div>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active"><div class="testimonial-card"><i class="fas fa-quote-left fa-3x mb-3" style="color: var(--primary);"></i><p>TechFlow transformed our online presence completely. The team is professional and delivered ahead of schedule!</p><h5>Sarah Johnson</h5><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+          <div class="carousel-item"><div class="testimonial-card"><i class="fas fa-quote-left fa-3x mb-3" style="color: var(--primary);"></i><p>Exceptional quality and support. Our e-commerce sales increased by 150% after their solution!</p><h5>Michael Chen</h5><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+          <div class="carousel-item"><div class="testimonial-card"><i class="fas fa-quote-left fa-3x mb-3" style="color: var(--primary);"></i><p>Best agency experience ever. The attention to detail is unmatched in the industry.</p><h5>Priya Mehta</h5><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+        <div class="title-divider"></div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion faq-accordion" id="faqAccordion">
+            <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">What is the typical project timeline?</button></h2><div id="faq1" class="accordion-collapse collapse show"><div class="accordion-body">Most projects take 4-8 weeks depending on complexity. We provide weekly updates.</div></div></div>
+            <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Do you offer post-launch maintenance?</button></h2><div id="faq2" class="accordion-collapse collapse"><div class="accordion-body">Absolutely! All our plans include post-launch support and extended maintenance packages.</div></div></div>
+            <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Can you redesign an existing website?</button></h2><div id="faq3" class="accordion-collapse collapse"><div class="accordion-body">Yes, we specialize in website redesigns that improve performance and user experience.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+        <div class="title-divider"></div>
+      </div>
+      <div class="row g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <form id="contactForm" onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon.'); this.reset();">
+            <input type="text" class="form-control mb-3" placeholder="Your Name" required>
+            <input type="email" class="form-control mb-3" placeholder="Email Address" required>
+            <input type="tel" class="form-control mb-3" placeholder="Phone Number">
+            <textarea rows="5" class="form-control mb-3" placeholder="Tell us about your project" required></textarea>
+            <button type="submit" class="btn btn-primary w-100">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
+          </form>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="contact-info-card">
+            <h4>Contact Information</h4>
+            <div class="contact-item"><i class="fas fa-phone-alt"></i><div><h6>Phone</h6><p>+1 (555) 678-1234</p></div></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><div><h6>Email</h6><p>hello@techflow.agency</p></div></div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><div><h6>Office</h6><p>123 Digital Avenue, Silicon Valley, CA 94025</p></div></div>
+          </div>
+          <div class="map-placeholder mt-4"><iframe src="https://maps.google.com/maps?q=Silicon%20Valley%2C%20CA&t=&z=12&ie=UTF8&iwloc=&output=embed" width="100%" height="250" style="border:0; border-radius: 15px;" allowfullscreen=""></iframe></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4"><h4>Tech<span class="gradient-text">Flow</span></h4><p>Flowing ideas into digital excellence. Modern solutions for ambitious brands worldwide.</p><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
+        <div class="col-md-4"><h5>Quick Links</h5><ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+        <div class="col-md-4"><h5>Newsletter</h5><p>Subscribe for tech insights</p><form onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();"><input type="email" placeholder="Your email" class="form-control mb-2"><button type="submit" class="btn btn-primary w-100">Subscribe</button></form></div>
+      </div>
+      <div class="footer-bottom text-center mt-4 pt-3 border-top"><p>&copy; 2025 TechFlow. All rights reserved. | <a href="#" id="backToTop" class="back-to-top" style="color: var(--primary); text-decoration: none;">Back to Top ↑</a></p></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/15551234567" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    
+    function updateThemeIcon(theme) {
+      const icon = themeToggle.querySelector('i');
+      const text = themeToggle.querySelector('span');
+      if (theme === 'dark') {
+        icon.className = 'fas fa-sun';
+        if (text) text.textContent = 'Light';
+      } else {
+        icon.className = 'fas fa-moon';
+        if (text) text.textContent = 'Dark';
+      }
+    }
+    updateThemeIcon(savedTheme);
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+    
+    // Animated Counters
+    const counters = document.querySelectorAll('.counter-number');
+    const startCounting = (counter) => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      let current = 0;
+      const increment = target / 50;
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.innerText = Math.ceil(current);
+          setTimeout(updateCounter, 30);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCounter();
+    };
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startCounting(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(counter => counterObserver.observe(counter));
+    
+    // Back to Top
+    document.getElementById('backToTop')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Smooth Scroll & Active Nav
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const navbarCollapse = document.querySelector('.navbar-collapse');
+          if (navbarCollapse.classList.contains('show')) navbarCollapse.classList.remove('show');
+        }
+      });
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('mainNav');
+      if (window.scrollY > 50) nav.style.padding = '10px 0';
+      else nav.style.padding = '15px 0';
+      
+      // Active link
+      let current = '';
+      document.querySelectorAll('section').forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) current = section.getAttribute('id');
+      });
+      document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+      });
+    });
+    
+    // Auto-play carousel
+    new bootstrap.Carousel(document.getElementById('testimonialCarousel'), { interval: 5000, wrap: true });
+  </script>
+</body>
+</html>

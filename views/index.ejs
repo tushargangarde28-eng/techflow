@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Favicon -->
+<link rel="icon" type="image/png" href="/images/fs.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="TechFlow - Flowing Ideas Into Digital Solutions. Premium IT agency offering web development, e-commerce, SEO, and custom software solutions.">
+  <title>TechFlow | Premium Digital Solutions Agency</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <style>
+    /* ==================== RESET & VARIABLES ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0EA5E9;
+      --secondary: #2563EB;
+      --accent: #38BDF8;
+      --bg-dark: #0F172A;
+      --bg-darker: #0A0F1A;
+      --text-white: #FFFFFF;
+      --text-gray: #94A3B8;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --border-color: rgba(14, 165, 233, 0.2);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 30px rgba(14, 165, 233, 0.3);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ==================== TYPOGRAPHY ==================== */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 2.8rem;
+      }
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientShift 3s ease infinite;
+      background-size: 200% auto;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .title-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 1rem auto;
+      border-radius: 3px;
+    }
+
+    .section-subtitle {
+      color: var(--text-gray);
+      font-size: 1rem;
+    }
+
+    .section-padding {
+      padding: 60px 0;
+    }
+
+    @media (min-width: 768px) {
+      .section-padding {
+        padding: 100px 0;
+      }
+    }
+
+    /* ==================== NAVBAR ==================== */
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      transition: var(--transition);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    .brand-text {
+      color: var(--text-white);
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--text-gray);
+      font-weight: 500;
+      margin: 0 10px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary);
+    }
+
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+      width: 80%;
+    }
+
+    .navbar-toggler {
+      border: 1px solid var(--primary);
+      background: transparent;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(14, 165, 233, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero-section {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .hero-title {
+        font-size: 4.5rem;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Floating Icons */
+    .floating-icons {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .floating-icons i {
+      position: absolute;
+      font-size: 2rem;
+      color: var(--primary);
+      opacity: 0.3;
+      animation: float 20s infinite;
+    }
+
+    .floating-icons i:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+    .floating-icons i:nth-child(2) { top: 70%; left: 85%; animation-delay: 3s; font-size: 2.5rem; }
+    .floating-icons i:nth-child(3) { top: 40%; left: 80%; animation-delay: 6s; }
+    .floating-icons i:nth-child(4) { top: 80%; left: 20%; animation-delay: 2s; font-size: 1.8rem; }
+    .floating-icons i:nth-child(5) { top: 25%; left: 85%; animation-delay: 8s; font-size: 3rem; }
+    .floating-icons i:nth-child(6) { top: 60%; left: 5%; animation-delay: 4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(10deg); }
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(14, 165, 233, 0.6);
+    }
+
+    .btn-outline-light {
+      border: 2px solid var(--text-white);
+      background: transparent;
+    }
+
+    .btn-outline-light:hover {
+      background: var(--text-white);
+      color: var(--bg-dark);
+      transform: translateY(-3px);
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .scroll-indicator span {
+      display: block;
+      width: 30px;
+      height: 50px;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .scroll-indicator span::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 10px;
+      background: var(--primary);
+      border-radius: 2px;
+      animation: scroll 2s infinite;
+    }
+
+    @keyframes scroll {
+      0% { opacity: 1; top: 8px; }
+      100% { opacity: 0; top: 30px; }
+    }
+
+    /* ==================== MISSION CARDS ==================== */
+    .mission-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .mission-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    /* ==================== COUNTER CARDS ==================== */
+    .counter-card {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(37, 99, 235, 0.1));
+      border-radius: 20px;
+      padding: 30px 15px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .counter-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .counter-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    @media (min-width: 768px) {
+      .counter-number {
+        font-size: 3rem;
+      }
+    }
+
+    /* ==================== SERVICE CARDS ==================== */
+    .bg-gradient-alt {
+      background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .service-card i {
+      color: var(--primary);
+      margin-bottom: 15px;
+      transition: var(--transition);
+    }
+
+    .service-card:hover i {
+      transform: scale(1.1);
+      color: var(--accent);
+    }
+
+    .service-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .service-card h4 {
+        font-size: 1.3rem;
+      }
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+    }
+
+    /* ==================== TECH GRID ==================== */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .tech-grid {
+        gap: 30px;
+      }
+    }
+
+    .tech-item {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 20px 10px;
+      transition: var(--transition);
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+    }
+
+    .tech-item:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .tech-item i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .tech-item span {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* ==================== PORTFOLIO CARDS ==================== */
+    .portfolio-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid var(--border-color);
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .portfolio-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portfolio-card:hover .portfolio-image {
+      transform: scale(1.05);
+    }
+
+    .project-1 { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+    .project-2 { background: linear-gradient(135deg, var(--secondary), var(--accent)); }
+    .project-3 { background: linear-gradient(135deg, var(--accent), var(--primary)); }
+    .project-4 { background: linear-gradient(135deg, var(--primary), var(--accent)); }
+    .project-5 { background: linear-gradient(135deg, var(--secondary), var(--primary)); }
+
+    .portfolio-image i {
+      font-size: 4rem;
+      color: white;
+      opacity: 0.8;
+    }
+
+    .portfolio-content {
+      padding: 20px;
+    }
+
+    .tech-stack {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .tech-stack span {
+      background: rgba(14, 165, 233, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--primary);
+    }
+
+    .portfolio-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .portfolio-links .btn {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+    }
+
+    /* ==================== FEATURE CARDS ==================== */
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px 15px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .feature-card i {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .feature-card h5 {
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+    }
+
+    /* ==================== PRICING CARDS ==================== */
+    .pricing-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .pricing-card.featured {
+      border: 2px solid var(--primary);
+      transform: scale(1.02);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 5px 20px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 20px 0;
+    }
+
+    .price-period {
+      color: var(--text-gray);
+      font-size: 0.85rem;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 25px 0;
+      text-align: left;
+    }
+
+    .pricing-card ul li {
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pricing-card ul li i.fa-check {
+      color: #10B981;
+    }
+
+    .pricing-card ul li i.fa-times {
+      color: #EF4444;
+    }
+
+    /* ==================== TESTIMONIALS ==================== */
+    .testimonial-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card p {
+      font-size: 1.1rem;
+      font-style: italic;
+      margin: 20px 0;
+    }
+
+    .testimonial-card h5 {
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .stars {
+      margin-top: 15px;
+    }
+
+    .stars i {
+      color: #FBBF24;
+      margin: 0 2px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: var(--primary);
+      border-radius: 50%;
+      padding: 20px;
+      background-size: 50%;
+    }
+
+    /* ==================== FAQ ACCORDION ==================== */
+    .faq-accordion .accordion-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      margin-bottom: 15px;
+      border-radius: 15px !important;
+      overflow: hidden;
+    }
+
+    .faq-accordion .accordion-button {
+      background: transparent;
+      color: var(--text-white);
+      font-weight: 600;
+      padding: 20px;
+    }
+
+    .faq-accordion .accordion-button:not(.collapsed) {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(37, 99, 235, 0.1));
+      color: var(--primary);
+    }
+
+    .faq-accordion .accordion-button:focus {
+      box-shadow: none;
+      border-color: var(--primary);
+    }
+
+    .faq-accordion .accordion-body {
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--text-gray);
+      padding: 20px;
+    }
+
+    /* ==================== CONTACT SECTION ==================== */
+    .form-control {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-color);
+      color: var(--text-white);
+      padding: 12px 15px;
+      border-radius: 12px;
+    }
+
+    .form-control:focus {
+      background: rgba(30, 41, 59, 1);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+      color: var(--text-white);
+    }
+
+    .form-control::placeholder {
+      color: var(--text-gray);
+    }
+
+    .contact-info-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid var(--border-color);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .contact-item i {
+      width: 45px;
+      height: 45px;
+      background: rgba(14, 165, 233, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--primary);
+    }
+
+    .contact-item h6 {
+      margin-bottom: 5px;
+      font-size: 0.85rem;
+      color: var(--text-gray);
+    }
+
+    .contact-item p {
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+
+    .map-placeholder {
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      background: var(--bg-darker);
+      padding: 60px 0 20px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      background: rgba(14, 165, 233, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary);
+      color: var(--text-white);
+      transform: translateY(-3px);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .back-to-top {
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* ==================== WHATSAPP FLOAT ==================== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+      transition: var(--transition);
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      color: white;
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      .hero-buttons .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .section-padding {
+        padding: 50px 0;
+      }
+      
+      .counter-card {
+        padding: 20px 10px;
+      }
+      
+      .counter-number {
+        font-size: 2rem;
+      }
+      
+      .pricing-card {
+        margin-bottom: 20px;
+      }
+      
+      .testimonial-card {
+        padding: 25px;
+      }
+    }
+
+    /* ==================== ANIMATIONS ==================== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top glass-nav" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <span class="brand-text">Tech<span class="gradient-text">Flow</span></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#technologies">Tech Stack</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="floating-icons">
+      <i class="fab fa-react"></i>
+      <i class="fab fa-node-js"></i>
+      <i class="fab fa-python"></i>
+      <i class="fab fa-js"></i>
+      <i class="fab fa-aws"></i>
+      <i class="fas fa-database"></i>
+    </div>
+    <div class="container hero-container">
+      <div class="row min-vh-100 align-items-center">
+        <div class="col-lg-8 mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h1 class="hero-title">Flowing Ideas Into <span class="gradient-text">Digital Solutions</span></h1>
+          <p class="hero-subtitle mt-3">Transform your business with cutting-edge technology, innovative design, and scalable solutions that drive real results.</p>
+          <div class="hero-buttons mt-4">
+            <a href="#contact" class="btn btn-primary btn-lg me-3">Get Quote <i class="fas fa-arrow-right ms-2"></i></a>
+            <a href="#about" class="btn btn-outline-light btn-lg">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">About <span class="gradient-text">TechFlow</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">Innovative digital agency crafting exceptional experiences</p>
+      </div>
+      <div class="row g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <h3>We Turn Ideas Into Reality</h3>
+          <p class="lead">TechFlow is a premier IT agency dedicated to delivering high-performance digital solutions that empower businesses to thrive in the modern era.</p>
+          <p>With a team of passionate developers, creative designers, and strategic thinkers, we combine technical excellence with innovative design to create products that users love.</p>
+          <div class="mt-4">
+            <div class="d-flex align-items-center mb-3">
+              <i class="fas fa-check-circle text-primary me-3 fs-4"></i>
+              <span>100+ Projects Delivered</span>
+            </div>
+            <div class="d-flex align-items-center mb-3">
+              <i class="fas fa-check-circle text-primary me-3 fs-4"></i>
+              <span>24/7 Technical Support</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-check-circle text-primary me-3 fs-4"></i>
+              <span>Industry Certified Experts</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="row g-4">
+            <div class="col-6">
+              <div class="mission-card">
+                <i class="fas fa-bullseye fa-3x mb-3" style="color: #0EA5E9"></i>
+                <h4>Our Mission</h4>
+                <p>To democratize cutting-edge technology and help businesses scale through innovative digital solutions.</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mission-card">
+                <i class="fas fa-eye fa-3x mb-3" style="color: #38BDF8"></i>
+                <h4>Our Vision</h4>
+                <p>To become a global leader in digital transformation, recognized for excellence and innovation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Counters -->
+      <div class="row counters-row mt-5 g-4">
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+          <div class="counter-card">
+            <div class="counter-number" data-target="247">0</div>
+            <p>Projects Completed</p>
+            <i class="fas fa-code"></i>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+          <div class="counter-card">
+            <div class="counter-number" data-target="186">0</div>
+            <p>Happy Clients</p>
+            <i class="fas fa-smile"></i>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <div class="counter-card">
+            <div class="counter-number" data-target="24">0</div>
+            <p>Support Available</p>
+            <i class="fas fa-headset"></i>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="400">
+          <div class="counter-card">
+            <div class="counter-number" data-target="32">0</div>
+            <p>Technologies</p>
+            <i class="fas fa-microchip"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section-padding bg-gradient-alt">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">Comprehensive solutions tailored to your needs</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="50">
+          <div class="service-card">
+            <i class="fas fa-laptop-code fa-3x"></i>
+            <h4>Web Development</h4>
+            <p>Custom websites with modern tech stack</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="100">
+          <div class="service-card">
+            <i class="fas fa-mobile-alt fa-3x"></i>
+            <h4>Web Applications</h4>
+            <p>Dynamic PWAs & enterprise apps</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="150">
+          <div class="service-card">
+            <i class="fas fa-shopping-cart fa-3x"></i>
+            <h4>E-commerce</h4>
+            <p>Scalable online stores</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="200">
+          <div class="service-card">
+            <i class="fas fa-chart-line fa-3x"></i>
+            <h4>SEO Optimization</h4>
+            <p>Boost your rankings</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="250">
+          <div class="service-card">
+            <i class="fas fa-tools fa-3x"></i>
+            <h4>Maintenance</h4>
+            <p>24/7 support & updates</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="300">
+          <div class="service-card">
+            <i class="fas fa-paint-brush fa-3x"></i>
+            <h4>UI/UX Design</h4>
+            <p>User-first interfaces</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="350">
+          <div class="service-card">
+            <i class="fas fa-cloud fa-3x"></i>
+            <h4>Hosting Setup</h4>
+            <p>Managed cloud solutions</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="400">
+          <div class="service-card">
+            <i class="fas fa-cogs fa-3x"></i>
+            <h4>Custom Software</h4>
+            <p>Tailored enterprise solutions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologies Section -->
+  <section id="technologies" class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Tech <span class="gradient-text">Stack</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">Cutting-edge technologies we master</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-item" data-aos="zoom-in"><i class="fab fa-html5"></i><span>HTML5</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="50"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="100"><i class="fab fa-bootstrap"></i><span>Bootstrap</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="150"><i class="fab fa-js"></i><span>JavaScript</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="200"><i class="fab fa-node"></i><span>Node.js</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="250"><i class="fa-brands fa-microsoft"></i><span>.NET</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="300"><i class="fa-brands fa-php"></i><span>PHP</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="350"><i class="fa-brands fa-python"></i><span>Python</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-server"></i><span>Express.js</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="450"><i class="fas fa-database"></i><span>SQLite</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="500"><i class="fas fa-database"></i><span>MySQL</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="400"><i class="fab fa-git-alt"></i><span>Git</span></div>
+        <div class="tech-item" data-aos="zoom-in" data-aos-delay="450"><i class="fab fa-github"></i><span>GitHub</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="section-padding bg-gradient-alt">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Recent <span class="gradient-text">Projects</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">Showcasing our best work</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4" data-aos="flip-up">
+          <div class="portfolio-card">
+            <div class="portfolio-image project-1"><i class="fas fa-hospital-user"></i></div>
+            <div class="portfolio-content">
+              <h4>Techno Clinic</h4>
+              <p>Complete healthcare management platform with appointment scheduling and patient records.</p>
+              <div class="tech-stack">
+                <span>React</span><span>Node.js</span><span>MongoDB</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="btn btn-sm btn-outline-primary">Live Demo</a>
+                <a href="#" class="btn btn-sm btn-outline-light">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="100">
+          <div class="portfolio-card">
+            <div class="portfolio-image project-2"><i class="fas fa-utensils"></i></div>
+            <div class="portfolio-content">
+              <h4>Restaurant Website</h4>
+              <p>Interactive menu system with online reservations and table management.</p>
+              <div class="tech-stack">
+                <span>HTML5</span><span>CSS3</span><span>PHP</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="btn btn-sm btn-outline-primary">Live Demo</a>
+                <a href="#" class="btn btn-sm btn-outline-light">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="200">
+          <div class="portfolio-card">
+            <div class="portfolio-image project-3"><i class="fas fa-dumbbell"></i></div>
+            <div class="portfolio-content">
+              <h4>Gym Management</h4>
+              <p>Complete membership and class scheduling system with payment integration.</p>
+              <div class="tech-stack">
+                <span>MERN</span><span>JWT</span><span>Redux</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="btn btn-sm btn-outline-primary">Live Demo</a>
+                <a href="#" class="btn btn-sm btn-outline-light">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="300">
+          <div class="portfolio-card">
+            <div class="portfolio-image project-4"><i class="fas fa-user-circle"></i></div>
+            <div class="portfolio-content">
+              <h4>Portfolio Website</h4>
+              <p>Creative agency portfolio with smooth animations and modern design.</p>
+              <div class="tech-stack">
+                <span>GSAP</span><span>Bootstrap</span><span>AOS</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="btn btn-sm btn-outline-primary">Live Demo</a>
+                <a href="#" class="btn btn-sm btn-outline-light">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="400">
+          <div class="portfolio-card">
+            <div class="portfolio-image project-5"><i class="fas fa-university"></i></div>
+            <div class="portfolio-content">
+              <h4>College Management</h4>
+              <p>ERP system with analytics, reporting, and student management features.</p>
+              <div class="tech-stack">
+                <span>Django</span><span>SQLite</span><span>Bootstrap</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="#" class="btn btn-sm btn-outline-primary">Live Demo</a>
+                <a href="#" class="btn btn-sm btn-outline-light">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section id="whyus" class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Why <span class="gradient-text">Choose Us</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">What makes us different</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-md-4" data-aos="zoom-in">
+          <div class="feature-card">
+            <i class="fas fa-mobile-alt fa-3x"></i>
+            <h5>Mobile Responsive</h5>
+            <p>Perfect on all devices</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="50">
+          <div class="feature-card">
+            <i class="fas fa-tachometer-alt fa-3x"></i>
+            <h5>Fast Loading</h5>
+            <p>Optimized performance</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="feature-card">
+            <i class="fas fa-search fa-3x"></i>
+            <h5>SEO Friendly</h5>
+            <p>Rank higher on Google</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="150">
+          <div class="feature-card">
+            <i class="fas fa-shield-alt fa-3x"></i>
+            <h5>Secure Development</h5>
+            <p>Enterprise-grade security</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="feature-card">
+            <i class="fas fa-tag fa-3x"></i>
+            <h5>Affordable Pricing</h5>
+            <p>Best value for money</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="250">
+          <div class="feature-card">
+            <i class="fas fa-headset fa-3x"></i>
+            <h5>Ongoing Support</h5>
+            <p>24/7 customer service</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="section-padding bg-gradient-alt">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Pricing <span class="gradient-text">Plans</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">Choose the perfect plan for your business</p>
+      </div>
+      <div class="row g-4 align-items-center">
+        <div class="col-md-4" data-aos="flip-right">
+          <div class="pricing-card">
+            <h3>Starter</h3>
+            <div class="price">&#8377;299</div>
+            <p class="price-period">one-time</p>
+            <ul>
+              <li><i class="fas fa-check"></i> Landing Page</li>
+              <li><i class="fas fa-check"></i> Responsive Design</li>
+              <li><i class="fas fa-check"></i> SEO Basics</li>
+              <li><i class="fas fa-check"></i> 3 Months Support</li>
+              <li><i class="fas fa-times"></i> E-commerce</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline-primary w-100">Get Started</a>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="flip-right" data-aos-delay="100">
+          <div class="pricing-card featured">
+            <div class="popular-badge">Most Popular</div>
+            <h3>Business</h3>
+            <div class="price">&#8377;799</div>
+            <p class="price-period">one-time</p>
+            <ul>
+              <li><i class="fas fa-check"></i> Full Website + CMS</li>
+              <li><i class="fas fa-check"></i> E-commerce Ready</li>
+              <li><i class="fas fa-check"></i> Advanced SEO</li>
+              <li><i class="fas fa-check"></i> 6 Months Support</li>
+              <li><i class="fas fa-check"></i> API Integration</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary w-100">Choose Plan</a>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="flip-right" data-aos-delay="200">
+          <div class="pricing-card">
+            <h3>Premium</h3>
+            <div class="price">&#8377;1499</div>
+            <p class="price-period">one-time</p>
+            <ul>
+              <li><i class="fas fa-check"></i> Custom Web App</li>
+              <li><i class="fas fa-check"></i> Advanced Features</li>
+              <li><i class="fas fa-check"></i> Priority Support</li>
+              <li><i class="fas fa-check"></i> 12 Months Maintenance</li>
+              <li><i class="fas fa-check"></i> Unlimited Revisions</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline-primary w-100">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Client <span class="gradient-text">Testimonials</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">What our clients say about us</p>
+      </div>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="testimonial-card">
+              <i class="fas fa-quote-left fa-3x mb-3" style="color: #0EA5E9"></i>
+              <p>TechFlow transformed our online presence completely. The team is professional, responsive, and delivered ahead of schedule!</p>
+              <h5>Sarah Johnson</h5>
+              <span>CEO, InnovateX</span>
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <i class="fas fa-quote-left fa-3x mb-3" style="color: #0EA5E9"></i>
+              <p>Exceptional quality and support. Our e-commerce sales increased by 150% after their solution. Highly recommended!</p>
+              <h5>Michael Chen</h5>
+              <span>Founder, UrbanCart</span>
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <i class="fas fa-quote-left fa-3x mb-3" style="color: #0EA5E9"></i>
+              <p>Best agency experience ever. The attention to detail and performance optimization is unmatched in the industry.</p>
+              <h5>Priya Mehta</h5>
+              <span>CTO, ApexSoft</span>
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding bg-gradient-alt">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+        <div class="title-divider"></div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion faq-accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  What is the typical project timeline?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Most projects take 4-8 weeks depending on complexity. We provide weekly updates and follow an agile methodology to ensure timely delivery.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  Do you offer post-launch maintenance?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Absolutely! All our plans include post-launch support. We also offer extended maintenance packages for ongoing updates, security patches, and feature additions.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  Can you redesign an existing website?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes, we specialize in website redesigns. We analyze your current site, improve performance, update the design, and enhance user experience while preserving your SEO rankings.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  What technologies do you specialize in?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We specialize in modern web technologies including HTML5, CSS3, JavaScript, React, Node.js, Python, PHP, and various database systems. Check our Tech Stack section for details.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+        <div class="title-divider"></div>
+        <p class="section-subtitle">Let's discuss your next project</p>
+      </div>
+      <div class="row g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <form id="contactForm" onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon.'); this.reset();">
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Email Address" required>
+            </div>
+            <div class="mb-3">
+              <input type="tel" class="form-control" placeholder="Phone Number">
+            </div>
+            <div class="mb-3">
+              <textarea rows="5" class="form-control" placeholder="Tell us about your project" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
+          </form>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="contact-info-card">
+            <h4>Contact Information</h4>
+            <div class="contact-item">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <h6>Phone</h6>
+                <p>+91 8080976977</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h6>Email</h6>
+                <p>tushargangarde28@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h6>Office</h6>
+                <p>Ahilyanagar, Maharashtra, India</p>
+              </div>
+            </div>
+          </div>
+          <div class="map-placeholder mt-4">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60325.1495037587!2d74.7220132!3d19.0935317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdcb05d46788921%3A0x6677e92c1a5181b6!2sAhilyanagar%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1780389142647!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h4>Tech<span class="gradient-text">Flow</span></h4>
+          <p>Flowing ideas into digital excellence. Modern solutions for ambitious brands worldwide.</p>
+          <div class="social-icons mt-3">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Newsletter</h5>
+          <p>Subscribe for tech insights and updates</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();">
+            <input type="email" placeholder="Your email" class="form-control mb-2" required>
+            <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 TechFlow. All rights reserved. | <a href="#" id="backToTop" class="back-to-top">Back to Top <i class="fas fa-arrow-up"></i></a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/+91 8080976977" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100,
+      easing: 'ease-in-out'
+    });
+
+    // Sticky navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('mainNav');
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+        navbar.style.backdropFilter = 'blur(15px)';
+        navbar.style.padding = '10px 0';
+      } else {
+        navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+        navbar.style.backdropFilter = 'blur(10px)';
+        navbar.style.padding = '15px 0';
+      }
+    });
+
+    // Animated Counters
+    const counters = document.querySelectorAll('.counter-number');
+    
+    const startCounting = (counter) => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      let current = 0;
+      const increment = target / 50;
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.innerText = Math.ceil(current);
+          setTimeout(updateCounter, 30);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCounter();
+    };
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startCounting(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => {
+      counterObserver.observe(counter);
+    });
+
+    // Back to top button
+    document.getElementById('backToTop').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Smooth scrolling for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // Close mobile menu
+          const navbarCollapse = document.querySelector('.navbar-collapse');
+          if (navbarCollapse.classList.contains('show')) {
+            navbarCollapse.classList.remove('show');
+          }
+        }
+      });
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Service card hover animation
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px) scale(1.02)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Tech items animation
+    const techItems = document.querySelectorAll('.tech-item');
+    techItems.forEach((item, index) => {
+      setInterval(() => {
+        item.style.transform = 'translateY(-5px)';
+        setTimeout(() => {
+          item.style.transform = 'translateY(0)';
+        }, 500);
+      }, 3000 + (index * 200));
+    });
+
+    console.log('TechFlow website loaded successfully!');
+  </script>
+</body>
+</html>
