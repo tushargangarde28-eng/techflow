@@ -1,4 +1,10 @@
 {
+  "name": "techflow",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "ejs": "^6.0.1",
     "express": "^5.2.1"
